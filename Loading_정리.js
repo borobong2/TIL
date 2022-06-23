@@ -1,57 +1,65 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import Hello from '../pages/Hello';
-import Login from '../pages/Login';
-import Intro1 from '../pages/Intro1';
-import Intro2 from '../pages/Intro2';
-import Intro3 from '../pages/Intro3';
-import Loading from '../pages/Loading';
-// 앱이 각 화면이 전환될 수 있는 기본 틀을 제공한다.
-const Stack = createStackNavigator();
+import React, {useEffect, useRef} from 'react';
+import {View, StyleSheet, Animated} from 'react-native';
+import {WithLocalSvg} from 'react-native-svg';
+import Logo from '../assets/logo/Loading.svg';
 
-const Navigation = () => {
-  const [isLoading, setLoading] = React.useState(true);
+const Loading = ({navigation}) => {
+  const scale = useRef(new Animated.Value(1)).current;
 
-  React.useEffect(() => {
-    setLoading(true);
+  const changeScale = () => {
+    Animated.timing(scale, {
+      toValue: 1.05,
+      duration: 225,
+      useNativeDriver: true,
+    }).start(() => {
+      Animated.timing(scale, {
+        toValue: 1,
+        duration: 225,
+        useNativeDriver: true,
+      }).start();
+    });
+  };
 
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+  useEffect(() => {
+    setInterval(() => {
+      changeScale();
+    }, 450);
   }, []);
-  console.log(isLoading);
+
   return (
-    //네비게이션의 트리를 관리해주는 컴포넌트
-    <NavigationContainer>
-      {/* 네비게이션 기본틀의 스택을 생성 */}
-      <Stack.Navigator>
-        {/* 해당스택에 들어갈 화면 요소를 넣어준다. */}
-        <Stack.Screen
-          name="Home"
-          component={Hello}
-          options={{header: () => null}}
-        />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen
-          name="Intro1"
-          component={Intro1}
-          options={{header: () => null}}
-        />
-        <Stack.Screen
-          name="Intro2"
-          component={Intro2}
-          options={{header: () => null}}
-        />
-        <Stack.Screen
-          name="Intro3"
-          component={Intro3}
-          options={{header: () => null}}
-        />
-      </Stack.Navigator>
-      {isLoading ? <Loading /> : null}
-    </NavigationContainer>
+    <View style={styles.wrap}>
+      <View style={styles.logo}>
+        <Animated.View style={[{transform: [{scale}]}]}>
+          <WithLocalSvg
+            fill={'#000000'}
+            asset={Logo}
+            style={styles.changeSize}
+          />
+        </Animated.View>
+      </View>
+    </View>
   );
 };
 
-export default Navigation;
+const styles = StyleSheet.create({
+  wrap: {
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#fff',
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  changeSize: {
+    width: 105,
+    height: 105,
+  },
+});
+
+export default Loading;
