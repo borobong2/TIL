@@ -11,3 +11,26 @@ setData(list);
 1. 이뮤터블(변경 불가) 뮤터블(변경 가능)
 
 배열의 값만 비교할 수 있는 것 equal?
+
+문제
+
+```javascript
+if (list === data) {
+  console.log(같다!)
+}
+```
+
+이경우에 data가 복사가 깊은 복사일 경우에만 같다
+(주소까지 같은 경우)
+
+고로 주소값이 달라지면 달라짐!
+
+배열을 비교할 수 있는 방법은 ?
+
+```javascript
+import _ from "lodash"
+
+_.isEqual(data, list) {
+
+}
+```
