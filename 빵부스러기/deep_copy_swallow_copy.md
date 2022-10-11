@@ -16,7 +16,9 @@ setData(list);
 
 ```javascript
 if (list === data) {
-  console.log(같다!)
+  console.log("같다!");
+} else {
+  console.log("다르다");
 }
 ```
 
