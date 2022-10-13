@@ -14,7 +14,7 @@ Lodash는 배열, 숫자, 객체, 문자열 등을 순회하면서 각 요소마
 import _ from "lodash";
 
 if(_.isEqual(data, list)) {
-  ...
+  console.log(같다!)
 }
 ```
 
