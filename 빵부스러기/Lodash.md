@@ -19,3 +19,4 @@ if(_.isEqual(data, list)) {
 ```
 
 이렇게 쓰면 된다~
+옴
