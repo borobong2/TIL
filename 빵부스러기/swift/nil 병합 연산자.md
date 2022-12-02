@@ -17,6 +17,6 @@ var num1: Int? = nil
 var num2: Int = num1!
 
 print(num1, num2)
-// Optional(1) 1
+// Optional(1)
 
 ```
