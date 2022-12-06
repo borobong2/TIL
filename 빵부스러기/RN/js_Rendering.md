@@ -5,7 +5,7 @@
 getWeeklySummary = async(item: any) => {
 
   let dailyCompletion = [];
-  const logs = await LogStore.getWeeklyLogs();
+  const logs = await this.props.LogStore.getWeeklyLogs();
   let temp = moment(fromDate);
   ...
   내용
