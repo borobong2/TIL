@@ -26,4 +26,9 @@ protocol Student {
   var name: String { get }
   static var schoolNumber: Int { get set }
 }
+
+struct SomeStructure: Student {
+    // structure definition goes here
+}
+
 ```
