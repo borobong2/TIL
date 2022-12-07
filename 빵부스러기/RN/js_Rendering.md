@@ -34,3 +34,34 @@ getWeeklySummary = (item: any) => {
 
 
 ```
+
+```javascript
+// 221208 추가 코드
+// Test 1 (코드 외부로 뺐을때)
+const fetch = async (value) => {
+  const answer = await value;
+  setTimeout(() => {
+    console.log('동작 완료', answer);
+  }, 3000);
+};
+
+const func = () => {
+  fetch('안녕');
+};
+
+// Test 2 (코드 내부에서 실행)
+
+const func = () => {
+  setTimeout(() => {
+    console.log('동작 완료, 안녕');
+  }, 3000);
+};
+
+console.time('function');
+func();
+console.timeEnd('function');
+```
+
+![test_result](js_render_test_result.png)
+
+- 속도 차이 10배 발생
