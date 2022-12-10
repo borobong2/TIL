@@ -41,8 +41,8 @@ getWeeklySummary = (item: any) => {
 // Test 1 (코드 내부에서 실행)
 
 const func = async () => {
-  const hello = await setTimeout(() => {
-    console.log('동작 완료, 안녕');
+  const hello = await setTimeout((value) => {
+    console.log('동작 완료');
   }, 3000);
 };
 
