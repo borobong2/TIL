@@ -12,4 +12,8 @@ for item in myArray {
 for item in myArray where item %2 != 0 {
   print("홀수: \(item)")
 }
+
+for index in 0..<5 {  // index 값을 사용하지 않으면  index -> _
+  print("index: \(index)")
+}
 ```
