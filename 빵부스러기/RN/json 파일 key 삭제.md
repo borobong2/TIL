@@ -2,8 +2,9 @@
 
 - 만든 목적: 언어 스크립트(json 파일)에서 미사용 스크립트를 제거해야하는데, 언어가 11개이고 key 값이 천개가 넘어서 자동화가 필요하다고 생각해 만들게 되었습니다.
 
-```javascript
+- key 포인트: removeUnusedKeys
 
+```javascript
 const customUnusedKeys = [
   'remove-template-question',
   'habit-added-to-myhabit',
